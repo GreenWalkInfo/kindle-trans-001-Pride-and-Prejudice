@@ -1,0 +1,7 @@
+gemini_file_cache.db
+__pycache__/
+*.pyc
+.DS_Store
+_output/tmp/
+_output/logs/
+_output/images/

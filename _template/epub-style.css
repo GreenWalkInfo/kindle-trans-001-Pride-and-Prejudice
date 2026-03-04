@@ -1,0 +1,306 @@
+@charset "UTF-8";
+
+
+
+/* Project Gutenberg 縦書きEPUB用スタイルシート for Amazon KDP */
+
+/* 全体設定 */
+html {
+  writing-mode: vertical-rl;
+  -epub-writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3", "游明朝", "Yu Mincho", "YuMincho", serif;
+}
+
+body {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  widows: 2;
+  orphans: 2;
+}
+
+/* テキスト要素 */
+p {
+  text-indent: 1em;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  line-break: auto;
+  hanging-punctuation: allow-end;
+}
+
+p.no-indent {
+  text-indent: 0;
+}
+
+div.no-indent p {
+  text-indent: 0 !important;
+}
+
+/* 目次などの箇条書きスタイル */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+blockquote {
+  margin: 0.5em 1em;
+  padding: 1em 0;
+  background-color: #f4f4f4;
+  border: 1px solid #858585;
+  font-style: normal;
+}
+
+blockquote,
+blockquote p {
+  text-indent: 0 !important;
+}
+
+blockquote p:first-child { 
+  margin-top: 0; 
+}
+
+blockquote p:last-child { 
+  margin-bottom: 0; 
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  margin: 2em 0;
+}
+
+/* 見出し */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1.2;
+  text-indent: 0;
+  margin-bottom: 1em;
+  margin-right: 0.5em;
+}
+
+h1 {
+  font-size: 1.5em;
+  page-break-before: always;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 1.3em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 1.2em;
+  margin-top: 1em;
+}
+
+/* 画像とキャプション */
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  padding: 0;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  writing-mode: horizontal-tb;
+  -epub-writing-mode: horizontal-tb;
+  -webkit-writing-mode: horizontal-tb;
+}
+
+img {
+  width: 70% !important;
+  max-width: 70% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: auto 0;
+  order: 1;
+  flex-shrink: 1;
+  flex-grow: 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+figcaption {
+  display: block;
+  writing-mode: horizontal-tb;
+  -epub-writing-mode: horizontal-tb;
+  -webkit-writing-mode: horizontal-tb;
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 1;
+  text-indent: 0;
+  order: 2;
+  padding: 0.5em 0 0 0;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+/* 特殊なテキストスタイル */
+ruby > rt {
+  font-size: 0.5em;
+}
+
+em, .emphasis {
+  font-style: normal;
+  text-emphasis-style: filled sesame;
+  -webkit-text-emphasis-style: filled sesame;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+/* ページ区切り */
+.page-break {
+  page-break-before: always;
+}
+
+p.author {
+  margin-top: 0;
+  text-indent: 20em;
+  line-height: 1.0;
+  text-align: left;
+}
+
+/* 注釈リンクのスタイル */
+.footnote-ref {
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+  text-decoration: none;
+  color: inherit;
+  /* 縦中横の設定 */
+  text-combine-upright: all;
+  -webkit-text-combine: horizontal;
+}
+
+/* 奥付全体（カードスタイル・横書き・モバイル最適化） */
+.colophon {
+  writing-mode: horizontal-tb;
+  -epub-writing-mode: horizontal-tb;
+  -webkit-writing-mode: horizontal-tb;
+  font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "Meiryo", sans-serif;
+  margin: 1em auto; /* マージン縮小 */
+  padding: 1em; /* パディング縮小 */
+  border: 1px solid #ccc;
+  max-width: 90%; /* 幅を広げて高さを抑える */
+  background-color: #fff;
+  page-break-before: always;
+  page-break-inside: avoid; /* ページまたぎを阻止 */
+  break-inside: avoid;
+  font-size: 0.9em; /* 全体の文字サイズを少し小さく */
+}
+
+.colophon h1 {
+  text-align: left;
+  font-size: 1.1em; /* タイトル縮小 */
+  border-bottom: none;
+  margin-bottom: 0.3em;
+  line-height: 1.2;
+}
+
+.colophon h2 {
+  text-align: left;
+  font-size: 1.2em; /* サブタイトル縮小 */
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  border-bottom: none;
+  line-height: 1.2;
+}
+
+.colophon p {
+  text-indent: 0;
+  margin: 0.5em 0;
+}
+
+.colophon ul {
+  margin: 1em 0; /* リスト上下マージン縮小 */
+  padding-left: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.colophon li {
+  list-style-type: none;
+  margin-bottom: 0.2em; /* 行間縮小 */
+  font-size: 0.95em;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* 脚注セクション全体のスタイル */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+section.footnotes {
+  writing-mode: vertical-rl;
+  -epub-writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  margin: 2em 1em; /* 上下 左右 */
+  padding: 1em;
+  border: 1px solid #adadad;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+section.footnotes p {
+  text-indent: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* 脚注セクションの区切り線をカスタマイズ */
+section.footnotes > hr {
+  display: none;
+}
+
+/* Kindle用ポップアップ脚注スタイル (asideベース) */
+aside[epub|type~="footnote"] {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-right: 1em; /* 番号スペース */
+  font-size: 0.9em;
+  writing-mode: vertical-rl;
+  -epub-writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+}
+
+aside[epub|type~="footnote"] p {
+  margin: 0 !important;
+  text-indent: 0 !important;
+  display: inline;
+}
+
+/* バックリンク（戻りリンク）のスタイル */
+section.footnotes .footnote-back {
+  text-decoration: none;
+  font-size: 0.9em;
+  margin-left: 0.3em;
+  color: #666;
+  /* 脚注番号を縦中横で表示 */
+  text-combine-upright: all;
+  -webkit-text-combine: horizontal;
+  -epub-text-combine: horizontal;
+}
+
+section.footnotes .footnote-back:hover {
+  color: #333;
+}
+
+/* 脚注番号（戻りリンク）の直後にドットを追加する */
+section.footnotes .footnote-back::after {
+  content: ".";
+}
